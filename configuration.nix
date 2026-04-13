@@ -46,21 +46,11 @@
     extraGroups = [ "wheel" ];
   };
 
-  # Define caddy service
-  services.caddy = {
-    enable = true;
-
-    virtualHosts."immich.main.garnix-immich.tbaldwin-dev.garnix.me" = {
-      extraConfig = ''
-        reverse_proxy 127.0.0.1:2283
-      '';
-    };
-  };
-
   # Define Immich Service
   services.immich = {
     enable = true;
-    host = "127.0.0.1";
+    host = "0.0.0.0";
+    port = 80;
     accelerationDevices = null;
     machine-learning.environment = {
       MACHINE_LEARNING_WORKERS = "1";
